@@ -1,22 +1,17 @@
 package es.upm.grise.profundizacion.file;
 
-public class FileUtils {
-	
-	// Please notice the difference between the class diagram and this implementation
-	// The reason is to facilitate unit testing
-	
-	long CRC32;
-	
-	void setCRC(long CRC32) {
-		
-		this.CRC32 = CRC32;
-		
-	}
-	
-	long calculateCRC32(byte[] bytes) {
-		
-		return this.CRC32;
-		
-	}
+import java.util.zip.CRC32;
 
+public class FileUtils {
+
+    /**
+     * Calcula el CRC32 de un array de bytes.
+     * @param bytes Datos sobre los cuales calcular el CRC32.
+     * @return Valor CRC32 como long.
+     */
+    public long calculateCRC32(byte[] bytes) {
+        CRC32 crc = new CRC32();
+        crc.update(bytes);
+        return crc.getValue();
+    }
 }
